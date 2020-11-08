@@ -20,11 +20,14 @@ if (binPage == undefined) {
 }
 
 // Move selection to Bin
-if (figma.currentPage.selection.length <= 0) {
+if (figma.currentPage.selection.length == 0) {
     figma.closePlugin("👆  Please make a selection")
   } else {
     for (const node of figma.currentPage.selection) {
-        binPage.appendChild(node);
+        // const frame = figma.createFrame()
+        // frame.name = "Deleted"
+        // frame.appendChild(node)
+        binPage.appendChild(node)
     }
     figma.currentPage.selection = []
     figma.closePlugin("🗑  Moved to Bin")
