@@ -2,7 +2,7 @@ var allPages
 var binPage
 
 // Find all pages
-var allPages = figma.root.findAll(node => node.type === "PAGE")
+allPages = figma.root.findAll(node => node.type === "PAGE")
 
 // Checking pages names
 for (let index in allPages) {
@@ -17,6 +17,17 @@ for (let index in allPages) {
 if (binPage == undefined) {
     var a = figma.createPage()
     a.name = "🗑  Bin"
+}
+
+// Move selection to Bin
+if (figma.currentPage.selection.length <= 0) {
+    figma.closePlugin("👆  Please make a selection")
+  } else {
+    for (const node of figma.currentPage.selection) {
+        binPage.appendChild(node);
+    }
+    figma.currentPage.selection = []
+    figma.closePlugin("🗑  Moved to Bin")
 }
 
 figma.closePlugin()
