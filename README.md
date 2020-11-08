@@ -1,0 +1,1 @@
+# Trash-can-figma-plugin
